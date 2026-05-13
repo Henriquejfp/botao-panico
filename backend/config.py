@@ -7,5 +7,6 @@ load_dotenv()
 db = SQLAlchemy()
 
 class Config:
-    DQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:batata@localhost:5432/botao_panico"
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+

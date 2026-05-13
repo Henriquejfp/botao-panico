@@ -13,4 +13,4 @@ def init_routes(app):
     @app.route("/alerta", methods=["GET"])
     def listar_alertas():
         alertas = Alerta.query.all()
-        return jsonify([{"id": a.id, "mensagem": a.mensagem, "criado_em": a.criado_em} for a in alertas])
+        return jsonify([{"id": a.id, "mensagem": a.mensagem, "data_criacao": a.data_criacao} for a in alertas])
