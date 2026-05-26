@@ -1,12 +1,11 @@
 import os
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from dotenv import load_dotenv
 
-load_dotenv()
+app = Flask(__name__)
 
-db = SQLAlchemy()
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-class Config:
-    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:batata@localhost:5432/botao_panico"
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+db = SQLAlchemy(app)
 

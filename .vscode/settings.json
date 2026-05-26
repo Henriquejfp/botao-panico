@@ -3,5 +3,8 @@
     "-NoExit",
     "-Command",
     ".\\venv\\Scripts\\Activate.ps1"
+  ],
+  "python.analysis.extraPaths": [
+    "./backend"
   ]
 }
