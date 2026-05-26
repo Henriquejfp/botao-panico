@@ -3,12 +3,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
-# Ignorar dependências
-node_modules/
-.expo/
+# Ignorar variáveis de ambiente
+.env
+backend/.env
 
-# Ignorar arquivos temporários
-*.log
+# Ignorar arquivos de configuração locais
+__pycache__/
+*.pyc
 .vscode/
 
 # User-specific files
@@ -17,7 +18,6 @@ node_modules/
 *.user
 *.userosscache
 *.sln.docstates
-*.env
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
