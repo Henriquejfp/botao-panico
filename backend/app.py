@@ -1,10 +1,10 @@
 from flask import Flask
 from backend.routes import init_routes
-from backend.config import db
+from backend.config import Config, db
 
 
 app = Flask(__name__)
-app.config.from_object('backend.config.Config')
+app.config.from_object(Config)
 
 db.init_app(app)
 
