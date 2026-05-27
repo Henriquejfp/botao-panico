@@ -8,6 +8,10 @@ url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_KEY")
 supabase = create_client(url, key)
 
+@app.route("/")
+def home():
+    return "API do Botão de Pânico está online!"
+
 @app.route("/alerta", methods=["POST"])
 def alerta():
     mensagem = request.json.get("mensagem")
