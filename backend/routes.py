@@ -1,5 +1,6 @@
 from flask import request, jsonify
-from models import Alerta, db
+from backend.models import Alerta, db
+
 
 def init_routes(app):
     @app.route("/alerta", methods=["POST"])
