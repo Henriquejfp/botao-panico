@@ -1,18 +1,23 @@
-from flask import Flask
-from backend.routes import init_routes
-from backend.config import Config, db
-
+from flask import Flask, request, jsonify
+from supabase import create_client
+import os
 
 app = Flask(__name__)
-app.config.from_object(Config)
 
-db.init_app(app)
+url = os.getenv("SUPABASE_URL")
+key = os.getenv("SUPABASE_KEY")
+supabase = create_client(url, key)
 
-with app.app_context():
-    db.create_all()
+@app.route("/alerta", methods=["POST"])
+def alerta():
+    mensagem = request.json.get("mensagem")
+    data = supabase.table("alerta").insert({"mensagem": mensagem}).execute()
+    return jsonify(data.data), 201
 
-init_routes(app)
+@app.route("/panic", methods=["GET"])
+def panic():
+    data = supabase.table("alerta").select("*").execute()
+    return jsonify(data.data), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
-
