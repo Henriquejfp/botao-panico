@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify
-from supabase import create_client
+from supabase import create_client, Client
 import os
 
 app = Flask(__name__)
 
 url = os.getenv("SUPABASE_URL")
 key = os.getenv("SUPABASE_KEY")
-supabase = create_client(url, key)
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 @app.route("/")
 def home():
