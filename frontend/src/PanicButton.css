@@ -1,0 +1,22 @@
+.panic-button {
+  background-color: #FFD600;   /* amarelo-ouro */
+  color: #B71C1C;              /* vermelho-escuro */
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 32px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.panic-button:hover {
+  background-color: #FFEB3B;   /* amarelo mais claro */
+  transform: scale(1.05);
+}
+
+.panic-button:active {
+  background-color: #FBC02D;   /* tom intermediário */
+  transform: scale(0.95);
+}

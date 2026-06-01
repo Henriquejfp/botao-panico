@@ -1,4 +1,5 @@
 import React from 'react';
+import './PanicButton.css';
 
 function PanicButton() {
   const sendAlert = async () => {
@@ -13,10 +14,11 @@ function PanicButton() {
   };
 
   return (
-    <button onClick={sendAlert} style={{background:"red",color:"white",padding:"20px",fontSize:"24px",borderRadius:"10px"}}>
-       Botão de Pânico
+    <button className="panic-button" onClick={sendAlert}>
+      🚨 Botão de Pânico
     </button>
   );
 }
 
 export default PanicButton;
+

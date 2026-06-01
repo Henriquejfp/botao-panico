@@ -10,7 +10,7 @@ function App() {
       const response = await fetch("https://botao-panico-production.up.railway.app/alerta", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mensagem: "Botão de pânico acionado!" }),
+        body: JSON.stringify({ mensagem: "Botão do pânico acionado!" }),
       });
 
       if (response.ok) {
