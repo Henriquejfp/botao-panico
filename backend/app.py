@@ -1,17 +1,15 @@
 from flask import Flask, request, jsonify
 from supabase import create_client, Client
+from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-
-from supabase import create_client, Client
-import os
+CORS(app)
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-
 
 @app.route("/")
 def home():
