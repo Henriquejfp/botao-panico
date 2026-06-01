@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1> Botão de Pânico</h1>
+      <h1> Botão do Pânico</h1>
       <button className="panic-button" onClick={enviarAlerta}>
         Enviar Alerta
       </button>

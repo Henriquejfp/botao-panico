@@ -15,7 +15,7 @@ function PanicButton() {
 
   return (
     <button className="panic-button" onClick={sendAlert}>
-      🚨 Botão de Pânico
+      🚨 Botão do Pânico
     </button>
   );
 }
