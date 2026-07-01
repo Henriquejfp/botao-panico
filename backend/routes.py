@@ -7,11 +7,10 @@ def init_routes(app):
     def criar_alerta():
         data = request.get_json()
 
-        if not data or not data.get("mensagem"):
-            return jsonify({"erro": "campo 'mensagem' é obrigatório"}), 400
+        if not data or not data.get("comentario"):
+            return jsonify({"erro": "campo 'comentario' é obrigatório"}), 400
 
         novo_alerta = Alerta(
-            mensagem=data["mensagem"],
             nome=data.get("nome"),
             telefone=data.get("telefone"),
             comentario=data.get("comentario"),
@@ -27,7 +26,6 @@ def init_routes(app):
         return jsonify([
             {
                 "id": a.id,
-                "mensagem": a.mensagem,
                 "nome": a.nome,
                 "telefone": a.telefone,
                 "comentario": a.comentario,

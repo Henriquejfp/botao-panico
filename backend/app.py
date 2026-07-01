@@ -20,7 +20,6 @@ def alerta():
     body = request.get_json()
 
     data = supabase.table("alerta").insert({
-        "mensagem": body.get("mensagem"),
         "nome": body.get("nome"),
         "telefone": body.get("telefone"),
         "comentario": body.get("comentario"),
