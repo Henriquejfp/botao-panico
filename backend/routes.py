@@ -6,12 +6,33 @@ def init_routes(app):
     @app.route("/alerta", methods=["POST"])
     def criar_alerta():
         data = request.get_json()
-        novo_alerta = Alerta(mensagem=data["mensagem"])
+
+        if not data or not data.get("mensagem"):
+            return jsonify({"erro": "campo 'mensagem' é obrigatório"}), 400
+
+        novo_alerta = Alerta(
+            mensagem=data["mensagem"],
+            nome=data.get("nome"),
+            telefone=data.get("telefone"),
+            comentario=data.get("comentario"),
+            anonimo=bool(data.get("anonimo", False)),
+        )
         db.session.add(novo_alerta)
         db.session.commit()
-        return jsonify({"status": "alerta criado"}), 201
+        return jsonify({"status": "alerta criado", "id": novo_alerta.id}), 201
 
     @app.route("/alerta", methods=["GET"])
     def listar_alertas():
-        alertas = Alerta.query.all()
-        return jsonify([{"id": a.id, "mensagem": a.mensagem, "data_criacao": a.data_criacao} for a in alertas])
+        alertas = Alerta.query.order_by(Alerta.data_criacao.desc()).all()
+        return jsonify([
+            {
+                "id": a.id,
+                "mensagem": a.mensagem,
+                "nome": a.nome,
+                "telefone": a.telefone,
+                "comentario": a.comentario,
+                "anonimo": a.anonimo,
+                "data_criacao": a.data_criacao,
+            }
+            for a in alertas
+        ])
