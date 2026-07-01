@@ -17,8 +17,16 @@ def home():
 
 @app.route("/alerta", methods=["POST"])
 def alerta():
-    mensagem = request.json.get("mensagem")
-    data = supabase.table("alerta").insert({"mensagem": mensagem}).execute()
+    body = request.get_json()
+
+    data = supabase.table("alerta").insert({
+        "mensagem": body.get("mensagem"),
+        "nome": body.get("nome"),
+        "telefone": body.get("telefone"),
+        "comentario": body.get("comentario"),
+        "anonimo": body.get("anonimo", False)
+    }).execute()
+
     return jsonify(data.data), 201
 
 @app.route("/panic", methods=["GET"])
