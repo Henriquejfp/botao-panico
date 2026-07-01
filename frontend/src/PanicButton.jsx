@@ -80,11 +80,7 @@ function PanicButton() {
       <div className="panic-card">
         {/* Header */}
         <div className="panic-header">
-          <div className="panic-eyebrow">SISTEMA DE EMERGÊNCIA</div>
           <h1 className="panic-title">BOTÃO DO PÂNICO</h1>
-          <p className="panic-subtitle">
-            Um toque envia sua mensagem para quem pode ajudar.
-          </p>
         </div>
 
         {/* SOS button */}
@@ -104,7 +100,7 @@ function PanicButton() {
             {isSending
               ? "ENVIANDO…"
               : isSent
-              ? "ALERTA ENVIADO ✓"
+              ? "ALERTA ENVIADO"
               : "PRONTO PARA ENVIAR"}
           </div>
         </div>
@@ -151,7 +147,7 @@ function PanicButton() {
 
           <textarea
             className="panic-textarea"
-            placeholder="Descreva rapidamente o que está acontecendo (opcional)"
+            placeholder="Descreva o que está acontecendo"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             rows={3}
@@ -159,13 +155,6 @@ function PanicButton() {
           />
           <div className="panic-charcount">{comment.length}/280</div>
 
-          <button
-            className="panic-send-btn"
-            onClick={sendAlert}
-            disabled={isSending}
-          >
-            {isSending ? "Enviando alerta…" : "Enviar Alerta"}
-          </button>
         </div>
 
         {/* Dispatch log */}
